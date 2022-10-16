@@ -6,7 +6,7 @@
 # *    Description: Shell script written to ease the creation of a shell
 # *                 script.
 # *
-# *        Version:  2.5
+# *        Version:  2.6
 # *        Created:  26/04/2012
 # *		
 # *       Revision:  04/02/2013
@@ -22,13 +22,17 @@
 # *		     4.- Added "sh", "pl" and "htm" id for creating bash, perl and 
 # *			 "htm" or "html" scripts.
 # *
+# *		     06/02/13
+# *			
+# *		     5.- Added code to test if the file being created already exists.
+
 # *         Author:  Ricktoshi, rick_navarro@protonmail.ch
 # *        Company:  NavCom
 # *
 #######################################################################################
 
 SH_header=~/Templates/headres/sh_header.txt
-PL_header=~/Templates/headres//pl_header.txt 
+PL_header=~/Templates/headres//pl_header.txt
 HTML_header=~/Templates/headres/htm_header.txt
 script_name=$1
 
@@ -41,8 +45,13 @@ if [  -z "$1" ]
    then
         echo "Please enter the name of the shell script you wish to create"
         exit 1
-#  else
-#	cat $Header > $1.sh
+
+	elif [ -f $1 ]
+	then
+		echo " "
+     		echo "Warning! File -- $1 -- already exists."
+		echo " "
+		exit 1
 fi
 
 
