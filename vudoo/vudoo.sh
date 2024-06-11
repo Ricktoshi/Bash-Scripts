@@ -25,15 +25,21 @@
 # *		     06/02/13
 # *			
 # *		     5.- Added code to test if the file being created already exists.
-
+# *
+# *        	     10/06/24
+# *
+# *        	     6.- Adder "go" extension for Goland files and fixed spelling error
+# *            	     in headers file path that had gone unnoticed for years.
+# *
 # *         Author:  Ricktoshi, rick_navarro@protonmail.ch
 # *        Company:  NavCom
 # *
 #######################################################################################
 
-SH_header=~/Templates/headres/sh_header.txt
-PL_header=~/Templates/headres//pl_header.txt
-HTML_header=~/Templates/headres/htm_header.txt
+SH_header=~/Templates/headers/sh_header.txt
+PL_header=~/Templates/headers/pl_header.txt
+HTML_header=~/Templates/headers/htm_header.txt
+GO_header=~/Templates/headers/go_header.txt
 script_name=$1
 
 #The -z switch will test if the expansion of "$1" is a null string or not. If it is a
@@ -66,6 +72,11 @@ if [[ "$1" == *.sh* ]]
 		elif [[ "$1" == *.htm* ]]
 		then
         	cat $HTML_header > $1
+
+      elif [[ "$1" == *.go* ]]
+      then
+          cat $GO_header > $1
+
 
 fi
 
